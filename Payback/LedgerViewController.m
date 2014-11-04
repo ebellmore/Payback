@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import "SingeLedgerViewController.h"
 #import "EditLedgerViewController.h"
+#import "CustomTableViewCell.h"
 
 @interface LedgerViewController ()
 @property (copy, nonatomic) NSArray *ledgers;
@@ -20,7 +21,7 @@
 
 @implementation LedgerViewController{
     
-     NSArray *passLedger;
+    NSArray *passLedger;
 }
 
 @synthesize tableView;
@@ -29,22 +30,22 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-//    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-//    testObject[@"foo"] = @"bar";
-//    [testObject saveInBackground];
+    //    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+    //    testObject[@"foo"] = @"bar";
+    //    [testObject saveInBackground];
     
     
-        //PFObject testObject = Parse.Object.extend("TestObject");
+    //PFObject testObject = Parse.Object.extend("TestObject");
     
-       NSMutableArray *listOfAccounts =[[NSMutableArray alloc]init];
+    NSMutableArray *listOfAccounts =[[NSMutableArray alloc]init];
     
     
     PFQuery *query2 = [PFQuery queryWithClassName:@"TestObject"];
     NSArray *resultList = [query2 findObjects];
-//    PFObject *result1 = [query2 getObjectWithId:@"ZY4LHycnbR"];
-//    PFObject *result2 = [query2 getObjectWithId:@"ZUraGcgwtu"];
-//    PFObject *result3 = [query2 getObjectWithId:@"zPX7qA8kPC"];
-//    PFObject *result4 = [query2 getObjectWithId:@"17zh1eTY2o"];
+    //    PFObject *result1 = [query2 getObjectWithId:@"ZY4LHycnbR"];
+    //    PFObject *result2 = [query2 getObjectWithId:@"ZUraGcgwtu"];
+    //    PFObject *result3 = [query2 getObjectWithId:@"zPX7qA8kPC"];
+    //    PFObject *result4 = [query2 getObjectWithId:@"17zh1eTY2o"];
     for(int i=0; i < resultList.count; i++){
         PFObject *result = resultList[i];
         NSString *fname = result[@"firstName"];
@@ -56,7 +57,7 @@
     UIEdgeInsets contentInset = tableView.contentInset;
     contentInset.top = 20;
     [tableView setContentInset:contentInset];
-
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,14 +66,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 
 - (NSInteger)tableView:(UITableView *)tableView
@@ -85,39 +86,45 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *SimpleTableIdentifier = @"LedgerCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
-                             SimpleTableIdentifier];
+    CustomTableViewCell *cell = (CustomTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:
+                                                        SimpleTableIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc]
+        cell = [[CustomTableViewCell alloc]
                 initWithStyle:UITableViewCellStyleDefault
                 reuseIdentifier:SimpleTableIdentifier];
     }
+    
     PFObject *holder = self.pfObjects[indexPath.row];
-    NSString *amountString = holder[@"amount"];
     NSString *nameString = self.ledgers[indexPath.row];
-    //NSString *combine = nameString + amountString;
-    cell.textLabel.text = [NSString stringWithFormat:@"%@     %@", nameString, amountString];//    cell.label2.text = @"1500";
-   
+    cell.name = nameString;
+    cell.amount = [holder[@"amount"] doubleValue];
     
     return cell;
 }
 
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"editLedgerSegue"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        EditLedgerViewController *destViewController = segue.destinationViewController;
-        destViewController.fname = [_ledgers objectAtIndex:indexPath.row];
-        destViewController.dbID = [_pfObjects objectAtIndex:indexPath.row];
-    }
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    EditLedgerViewController *destViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"EditLedger"];
+    destViewController.fname = [_ledgers objectAtIndex:indexPath.row];
+    destViewController.dbID = [_pfObjects objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:destViewController animated:YES];
 }
-    
+
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    if ([segue.identifier isEqualToString:@"editLedgerSegue"]) {
+//        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+//        EditLedgerViewController *destViewController = segue.destinationViewController;
+//        destViewController.fname = [_ledgers objectAtIndex:indexPath.row];
+//        destViewController.dbID = [_pfObjects objectAtIndex:indexPath.row];
+//    }
+//}
+
 //- (NSIndexPath *)tableView:(UITableView *)tableView
 //  willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 //{
-//    
+//
 //        return indexPath;
-//    
+//
 //}
 //
 //

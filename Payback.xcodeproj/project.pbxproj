@@ -10,9 +10,7 @@
 		15598B221A06BEC4000689FF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 15598B211A06BEC4000689FF /* main.m */; };
 		15598B251A06BEC4000689FF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 15598B241A06BEC4000689FF /* AppDelegate.m */; };
 		15598B281A06BEC4000689FF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15598B271A06BEC4000689FF /* ViewController.m */; };
-		15598B2B1A06BEC4000689FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15598B291A06BEC4000689FF /* Main.storyboard */; };
 		15598B2D1A06BEC4000689FF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15598B2C1A06BEC4000689FF /* Images.xcassets */; };
-		15598B301A06BEC4000689FF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15598B2E1A06BEC4000689FF /* LaunchScreen.xib */; };
 		15598B3C1A06BEC5000689FF /* PaybackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 15598B3B1A06BEC5000689FF /* PaybackTests.m */; };
 		15598B471A06BF74000689FF /* LedgerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15598B461A06BF74000689FF /* LedgerViewController.m */; };
 		15598B4A1A06BF92000689FF /* SingeLedgerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15598B491A06BF92000689FF /* SingeLedgerViewController.m */; };
@@ -31,6 +29,8 @@
 		15598B641A06CD65000689FF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15598B631A06CD65000689FF /* SystemConfiguration.framework */; };
 		15598B671A0765FC000689FF /* EditLedgerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15598B661A0765FC000689FF /* EditLedgerViewController.m */; };
 		15598B6D1A077B9C000689FF /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15598B6C1A077B9C000689FF /* CustomTableViewCell.m */; };
+		159A348C1A08901B00867540 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 159A348A1A08901B00867540 /* LaunchScreen.xib */; };
+		159A348D1A08901B00867540 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 159A348B1A08901B00867540 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,9 +51,7 @@
 		15598B241A06BEC4000689FF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		15598B261A06BEC4000689FF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		15598B271A06BEC4000689FF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		15598B2A1A06BEC4000689FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		15598B2C1A06BEC4000689FF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		15598B2F1A06BEC4000689FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		15598B351A06BEC4000689FF /* PaybackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PaybackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		15598B3A1A06BEC5000689FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15598B3B1A06BEC5000689FF /* PaybackTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaybackTests.m; sourceTree = "<group>"; };
@@ -78,6 +76,8 @@
 		15598B661A0765FC000689FF /* EditLedgerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditLedgerViewController.m; sourceTree = "<group>"; };
 		15598B6B1A077B9C000689FF /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
 		15598B6C1A077B9C000689FF /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
+		159A348A1A08901B00867540 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		159A348B1A08901B00867540 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,15 +143,15 @@
 		15598B1E1A06BEC4000689FF /* Payback */ = {
 			isa = PBXGroup;
 			children = (
+				159A348A1A08901B00867540 /* LaunchScreen.xib */,
+				159A348B1A08901B00867540 /* Main.storyboard */,
 				15598B231A06BEC4000689FF /* AppDelegate.h */,
 				15598B241A06BEC4000689FF /* AppDelegate.m */,
 				15598B261A06BEC4000689FF /* ViewController.h */,
 				15598B271A06BEC4000689FF /* ViewController.m */,
-				15598B291A06BEC4000689FF /* Main.storyboard */,
 				15598B451A06BF74000689FF /* LedgerViewController.h */,
 				15598B461A06BF74000689FF /* LedgerViewController.m */,
 				15598B2C1A06BEC4000689FF /* Images.xcassets */,
-				15598B2E1A06BEC4000689FF /* LaunchScreen.xib */,
 				15598B1F1A06BEC4000689FF /* Supporting Files */,
 				15598B481A06BF92000689FF /* SingeLedgerViewController.h */,
 				15598B491A06BF92000689FF /* SingeLedgerViewController.m */,
@@ -270,9 +270,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15598B2B1A06BEC4000689FF /* Main.storyboard in Resources */,
+				159A348C1A08901B00867540 /* LaunchScreen.xib in Resources */,
 				15598B4C1A06C64C000689FF /* Ledgers.plist in Resources */,
-				15598B301A06BEC4000689FF /* LaunchScreen.xib in Resources */,
+				159A348D1A08901B00867540 /* Main.storyboard in Resources */,
 				15598B2D1A06BEC4000689FF /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,25 +318,6 @@
 			targetProxy = 15598B361A06BEC4000689FF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		15598B291A06BEC4000689FF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				15598B2A1A06BEC4000689FF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		15598B2E1A06BEC4000689FF /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				15598B2F1A06BEC4000689FF /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		15598B3D1A06BEC5000689FF /* Debug */ = {
@@ -496,6 +477,7 @@
 				15598B411A06BEC5000689FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		15598B421A06BEC5000689FF /* Build configuration list for PBXNativeTarget "PaybackTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +486,7 @@
 				15598B441A06BEC5000689FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

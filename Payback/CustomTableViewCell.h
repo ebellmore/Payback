@@ -10,5 +10,5 @@
 
 @interface CustomTableViewCell : UITableViewCell
 @property (copy, nonatomic) NSString *name;
-@property (copy, nonatomic) NSString *amount;
+@property (nonatomic) double amount;
 @end
