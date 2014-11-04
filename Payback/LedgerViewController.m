@@ -29,35 +29,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    //    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-    //    testObject[@"foo"] = @"bar";
-    //    [testObject saveInBackground];
-    
-    
-    //PFObject testObject = Parse.Object.extend("TestObject");
-    
-    NSMutableArray *listOfAccounts =[[NSMutableArray alloc]init];
-    
+
+    UIEdgeInsets contentInset = self.tableView.contentInset;
+    contentInset.top = 20;
+    [self.tableView setContentInset:contentInset];
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
     PFQuery *query2 = [PFQuery queryWithClassName:@"TestObject"];
-    NSArray *resultList = [query2 findObjects];
-    //    PFObject *result1 = [query2 getObjectWithId:@"ZY4LHycnbR"];
-    //    PFObject *result2 = [query2 getObjectWithId:@"ZUraGcgwtu"];
-    //    PFObject *result3 = [query2 getObjectWithId:@"zPX7qA8kPC"];
-    //    PFObject *result4 = [query2 getObjectWithId:@"17zh1eTY2o"];
-    for(int i=0; i < resultList.count; i++){
-        PFObject *result = resultList[i];
-        NSString *fname = result[@"firstName"];
-        [listOfAccounts addObject:fname];
-    }
-    self.ledgers = listOfAccounts;
-    self.pfObjects = resultList;
-    UITableView *tableView = (id)[self.view viewWithTag:1];
-    UIEdgeInsets contentInset = tableView.contentInset;
-    contentInset.top = 20;
-    [tableView setContentInset:contentInset];
-    
+    [query2 findObjectsInBackgroundWithBlock:^(NSArray *resultList, NSError *error) {
+        NSMutableArray *listOfAccounts =[[NSMutableArray alloc]init];
+        for(int i=0; i < resultList.count; i++){
+            PFObject *result = resultList[i];
+            NSString *fname = result[@"firstName"];
+            [listOfAccounts addObject:fname];
+        }
+        self.ledgers = listOfAccounts;
+        self.pfObjects = resultList;
+        [self.tableView reloadData];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
