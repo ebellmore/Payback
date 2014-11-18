@@ -24,6 +24,7 @@
     // Do any additional setup after loading the view.
     NSString *test = holder[@"firstName"];
     NSString *id = holder.objectId;
+    
      fnameLabel.text = fname;
 }
 

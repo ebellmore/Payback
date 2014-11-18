@@ -11,6 +11,7 @@
 #import "SingeLedgerViewController.h"
 #import "EditLedgerViewController.h"
 #import "CustomTableViewCell.h"
+#import "LoginViewController.h"
 
 @interface LedgerViewController ()
 @property (copy, nonatomic) NSArray *ledgers;
@@ -38,6 +39,24 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    if (![PFUser currentUser]) { // No user logged in
+        // Create the log in view controller
+        PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
+        [logInViewController setDelegate:self]; // Set ourselves as the delegate
+        
+        // Create the sign up view controller
+        PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
+        [signUpViewController setDelegate:self]; // Set ourselves as the delegate
+        
+        // Assign our sign up controller to be displayed from the login controller
+        [logInViewController setSignUpController:signUpViewController];
+        
+        // Present the log in view controller
+        [self presentViewController:logInViewController animated:YES completion:NULL];
+    }
+    
+    
+    
     
     PFQuery *query2 = [PFQuery queryWithClassName:@"TestObject"];
     [query2 findObjectsInBackgroundWithBlock:^(NSArray *resultList, NSError *error) {
@@ -125,5 +144,36 @@
 //didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 //    
 //}
+
+
+
+
+#pragma mark - Logout
+
+
+
+-(void)showLogInPage{
+    
+PFLogInViewController *logInController = [[PFLogInViewController alloc] init];
+logInController.delegate = self;
+logInController.fields = PFLogInFieldsUsernameAndPassword | PFLogInFieldsLogInButton | PFLogInFieldsSignUpButton | PFLogInFieldsFacebook;
+PFSignUpViewController *signUpController = [[PFSignUpViewController alloc] init];
+signUpController.delegate = self;
+logInController.signUpController = signUpController;
+[self presentViewController:logInController animated:YES completion:nil];
+}
+
+- (IBAction)logoutButtonClicked:(id)sender {
+    [PFUser logOut];
+    [self showLogInPage];
+}
+
+
+
+
+
+
+
+
 
 @end
