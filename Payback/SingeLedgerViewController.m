@@ -44,21 +44,14 @@
     NSMutableDictionary * myDictionary = [NSMutableDictionary dictionary];;
     [myDictionary setValue:firstName.description forKey:@"firstName"];
     
-    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+    PFObject *testObject = [PFObject objectWithClassName:@"Person"];
+    testObject[@"owner"] = [PFUser currentUser];
     testObject[@"firstName"] = firstName;
     testObject[@"lastName"] = lastNAme;
-    testObject[@"amount"] = amount;
-    [testObject saveInBackground];
-    
-    
-    
-    
-//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Ledgers" ofType:@"plist"];
-//    NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:filePath];
-//    NSArray *array = [NSArray arrayWithArray:[dict objectForKey:@"Root"]];
-//    
-//    NSString* plistPath = [[NSBundle mainBundle] pathForResource:@"Ledgers" ofType:@"plist"];
-//    [myDictionary writeToFile:plistPath atomically:YES];
+    testObject[@"total"] = @([amount doubleValue]);
+    [testObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
     
 }
 

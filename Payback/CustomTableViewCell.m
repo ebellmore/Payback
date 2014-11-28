@@ -44,7 +44,7 @@
 -(void) layoutSubviews
 {
     [super layoutSubviews];
-    _nameLabel.frame = CGRectMake(0, 0, self.contentView.frame.size.width - 140, self.contentView.frame.size.height);
+    _nameLabel.frame = CGRectMake(20, 0, self.contentView.frame.size.width - 140, self.contentView.frame.size.height);
     _amountLabel.frame = CGRectMake(self.contentView.frame.size.width - 120, 0, 100, self.contentView.frame.size.height);
 }
 

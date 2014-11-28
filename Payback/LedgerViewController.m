@@ -14,8 +14,8 @@
 #import "LoginViewController.h"
 
 @interface LedgerViewController ()
-@property (copy, nonatomic) NSArray *ledgers;
-@property (copy,nonatomic) NSArray *pfObjects;
+
+@property (copy,nonatomic) NSArray *people;
 
 
 @end
@@ -58,16 +58,10 @@
     
     
     
-    PFQuery *query2 = [PFQuery queryWithClassName:@"TestObject"];
+    PFQuery *query2 = [PFQuery queryWithClassName:@"Person"];
+    [query2 whereKey:@"owner" equalTo:[PFUser currentUser]];
     [query2 findObjectsInBackgroundWithBlock:^(NSArray *resultList, NSError *error) {
-        NSMutableArray *listOfAccounts =[[NSMutableArray alloc]init];
-        for(int i=0; i < resultList.count; i++){
-            PFObject *result = resultList[i];
-            NSString *fname = result[@"firstName"];
-            [listOfAccounts addObject:fname];
-        }
-        self.ledgers = listOfAccounts;
-        self.pfObjects = resultList;
+        self.people = resultList;
         [self.tableView reloadData];
     }];
 }
@@ -88,10 +82,9 @@
  */
 
 
-- (NSInteger)tableView:(UITableView *)tableView
- numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.ledgers count];
+    return [self.people count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -106,10 +99,9 @@
                 reuseIdentifier:SimpleTableIdentifier];
     }
     
-    PFObject *holder = self.pfObjects[indexPath.row];
-    NSString *nameString = self.ledgers[indexPath.row];
-    cell.name = nameString;
-    cell.amount = [holder[@"amount"] doubleValue];
+    PFObject *holder = self.people[indexPath.row];
+    cell.name = holder[@"firstName"];
+    cell.amount = [holder[@"total"] doubleValue];
     
     return cell;
 }
@@ -117,8 +109,10 @@
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     EditLedgerViewController *destViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"EditLedger"];
-    destViewController.fname = [_ledgers objectAtIndex:indexPath.row];
-    destViewController.dbID = [_pfObjects objectAtIndex:indexPath.row];
+//    destViewController.fname = [_ledgers objectAtIndex:indexPath.row];
+//    destViewController.dbID = [_pfObjects objectAtIndex:indexPath.row];
+    PFObject *holder = self.people[indexPath.row];
+    destViewController.holder = holder;
     [self.navigationController pushViewController:destViewController animated:YES];
 }
 

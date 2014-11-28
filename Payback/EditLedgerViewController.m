@@ -10,22 +10,15 @@
 #import <Parse/Parse.h>
 @interface EditLedgerViewController ()
 
+@property (strong, nonatomic) IBOutlet UITextField *deltaAmount;
+@property (strong, nonatomic) IBOutlet UILabel *currentDebt;
+
 @end
 
 @implementation EditLedgerViewController
-@synthesize fnameLabel;
-@synthesize fname;
-@synthesize dbID;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    PFObject *holder = dbID;
-    
-    // Do any additional setup after loading the view.
-    NSString *test = holder[@"firstName"];
-    NSString *id = holder.objectId;
-    
-     fnameLabel.text = fname;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,33 +26,35 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    self.title = self.holder[@"firstName"];
+    self.currentDebt.text = [NSString stringWithFormat:@"Current: $%0.2f", [self.holder[@"total"] doubleValue]];
 }
-*/
 
-- (IBAction)addToLedgerClicked:(id)sender {
+- (IBAction)givePressed:(id)sender {
+    [self enterEmount:NO];
+}
+
+- (IBAction)borrowPressed:(id)sender {
+    [self enterEmount:YES];
+}
+
+- (void) enterEmount:(BOOL)isDebt {
     
-    PFObject *holder = dbID;
-    [holder delete];
+    double deltaAmount = [self.deltaAmount.text doubleValue];
+    double prevAmount = [self.holder[@"total"] doubleValue];
     
-    NSString *firstName = _FirstName.text;
-    NSString *lastNAme = _LastName.text;
-    NSString *amount = _Amount.text;
+    if(isDebt)
+        deltaAmount *= -1;
     
-    NSMutableDictionary * myDictionary = [NSMutableDictionary dictionary];;
-    [myDictionary setValue:firstName.description forKey:@"firstName"];
+    self.holder[@"total"] = @(prevAmount + deltaAmount);
     
-    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-    testObject[@"firstName"] = firstName;
-    testObject[@"lastName"] = lastNAme;
-    testObject[@"amount"] = amount;
-    [testObject saveInBackground];
+    [self.holder saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
 
 }
 
