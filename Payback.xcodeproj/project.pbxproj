@@ -38,6 +38,7 @@
 		15598B6D1A077B9C000689FF /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15598B6C1A077B9C000689FF /* CustomTableViewCell.m */; };
 		159A348C1A08901B00867540 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 159A348A1A08901B00867540 /* LaunchScreen.xib */; };
 		159A348D1A08901B00867540 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 159A348B1A08901B00867540 /* Main.storyboard */; };
+		25C2591D1A2CD29600411361 /* letter-p.png in Resources */ = {isa = PBXBuildFile; fileRef = 25C2591C1A2CD29600411361 /* letter-p.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		15598B6C1A077B9C000689FF /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
 		159A348A1A08901B00867540 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		159A348B1A08901B00867540 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		25C2591C1A2CD29600411361 /* letter-p.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "letter-p.png"; path = "../../../../Downloads/letter-p.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 		15598B1F1A06BEC4000689FF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				25C2591C1A2CD29600411361 /* letter-p.png */,
 				15598B201A06BEC4000689FF /* Info.plist */,
 				15598B211A06BEC4000689FF /* main.m */,
 				15598B4B1A06C64C000689FF /* Ledgers.plist */,
@@ -301,6 +304,7 @@
 			files = (
 				159A348C1A08901B00867540 /* LaunchScreen.xib in Resources */,
 				15598B4C1A06C64C000689FF /* Ledgers.plist in Resources */,
+				25C2591D1A2CD29600411361 /* letter-p.png in Resources */,
 				159A348D1A08901B00867540 /* Main.storyboard in Resources */,
 				15598B2D1A06BEC4000689FF /* Images.xcassets in Resources */,
 			);

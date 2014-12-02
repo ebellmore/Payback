@@ -10,6 +10,8 @@
 #import <Parse/Parse.h>
 @interface SingeLedgerViewController ()
 
+@property (weak, nonatomic) IBOutlet UIButton *addButton;
+
 @end
 
 @implementation SingeLedgerViewController
@@ -17,6 +19,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.addButton.layer.borderWidth = 1;
+    self.addButton.layer.borderColor = [UIColor blackColor].CGColor;
+    self.addButton.layer.cornerRadius =5;
+    self.addButton.layer.masksToBounds = YES;
 }
 
 - (void)didReceiveMemoryWarning {

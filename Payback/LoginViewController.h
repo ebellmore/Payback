@@ -10,5 +10,6 @@
 #import <Parse/Parse.h>
 @interface LoginViewController : UIViewController
 <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *displayUser;
 
 @end

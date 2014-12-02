@@ -11,6 +11,7 @@
 #import "LedgerViewController.h"
 #import "EditLedgerViewController.h"
 @interface LoginViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *displayUserName;
 
 @end
 
@@ -26,6 +27,8 @@
     [super viewDidAppear:animated];
   
     if (![PFUser currentUser] ) { // No user logged in
+        
+        
         // Create the log in view controller
         PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
         [logInViewController setDelegate:self]; // Set ourselves as the delegate
@@ -44,6 +47,9 @@
         //    LedgerViewController *ledgerViewController = [[LedgerViewController alloc] init];
         
         //    [self presentViewController:ledgerViewController animated:YES completion:nil];
+        PFUser *user = [PFUser currentUser];
+        NSString *username = user.username;
+        _displayUserName.text = username;
     }
 }
 
@@ -74,7 +80,10 @@
 
 // Sent to the delegate when a PFUser is logged in.
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
-   [self dismissViewControllerAnimated:YES completion:NULL];
+    
+    NSString *username = user.username;
+    _displayUserName.text = username;
+    [self dismissViewControllerAnimated:YES completion:NULL];
     
     
     

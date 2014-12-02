@@ -12,6 +12,8 @@
 
 @property (strong, nonatomic) IBOutlet UITextField *deltaAmount;
 @property (strong, nonatomic) IBOutlet UILabel *currentDebt;
+@property (weak, nonatomic) IBOutlet UIButton *giveButton;
+@property (weak, nonatomic) IBOutlet UIButton *borrowButton;
 
 @end
 
@@ -19,6 +21,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.giveButton.layer.borderWidth = 1;
+    self.giveButton.layer.borderColor = [UIColor blackColor].CGColor;
+    self.giveButton.layer.cornerRadius =5;
+    self.giveButton.layer.masksToBounds = YES;
+    
+    self.borrowButton.layer.borderWidth = 1;
+    self.borrowButton.layer.borderColor = [UIColor blackColor].CGColor;
+    self.borrowButton.layer.cornerRadius =5;
+    self.borrowButton.layer.masksToBounds = YES;
+    
 }
 
 - (void)didReceiveMemoryWarning {

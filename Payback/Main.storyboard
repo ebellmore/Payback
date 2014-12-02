@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ffI-K7-l1X">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ffI-K7-l1X">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -86,9 +86,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FNb-x1-vR6">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="FNb-x1-vR6">
                                 <rect key="frame" x="160" y="156" width="85" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.81545928030303028" green="0.081079444173965398" blue="0.061449260320835961" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Borrow">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -96,10 +97,12 @@
                                     <action selector="borrowPressed:" destination="sYj-Ud-F4b" eventType="touchUpInside" id="1i3-nf-uPH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="I14-Us-iD9">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="I14-Us-iD9">
                                 <rect key="frame" x="63" y="156" width="85" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.049255355057393868" green="0.5" blue="0.12608360556109571" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Give">
+                                    <color key="titleColor" red="0.97368945607421498" green="1" blue="0.95453326989712795" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -117,8 +120,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="borrowButton" destination="FNb-x1-vR6" id="ZDm-9y-gzP"/>
                         <outlet property="currentDebt" destination="TgJ-Ny-gqG" id="FkM-pI-S7Q"/>
                         <outlet property="deltaAmount" destination="yxK-za-awP" id="XaK-iv-XU7"/>
+                        <outlet property="giveButton" destination="I14-Us-iD9" id="XRQ-PJ-xS2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="83n-u2-jKl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -166,11 +171,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mH5-DE-qJB">
-                                <rect key="frame" x="134" y="344" width="99" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mH5-DE-qJB">
+                                <rect key="frame" x="82" y="344" width="151" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.70890396800593869" blue="0.54947569802992802" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Add to Ledger">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.03551342342050734" green="0.22543838407594641" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="addToLedgerClicked:" destination="6Je-IQ-ocB" eventType="touchUpInside" id="BqL-gb-ZhV"/>
@@ -191,6 +197,7 @@
                         <outlet property="Amount" destination="cGL-Bi-wHZ" id="j4z-ax-f0m"/>
                         <outlet property="FirstName" destination="wO0-Ew-0fc" id="v9f-9U-OnR"/>
                         <outlet property="LastName" destination="u3O-KS-a4l" id="ngs-Qc-lrS"/>
+                        <outlet property="addButton" destination="mH5-DE-qJB" id="ir8-vN-rOn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eS8-fC-Yru" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -222,23 +229,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vmL-0O-2RI">
-                                <rect key="frame" x="109" y="269" width="102" height="30"/>
+                                <rect key="frame" x="141" y="124" width="110" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="View Accounts">
+                                <state key="normal" title="Go To Accounts">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="jBB-m2-e0J" kind="modal" id="fLB-Od-zGv"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vtG-9h-oYk">
+                                <rect key="frame" x="141" y="77" width="152" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="62G-e3-ZLR">
+                                <rect key="frame" x="140" y="48" width="40" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Co5-kN-sLI"/>
+                    <connections>
+                        <outlet property="displayUser" destination="vtG-9h-oYk" id="3xD-71-Wea"/>
+                        <outlet property="displayUserName" destination="vtG-9h-oYk" id="SUU-Ym-aIb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ljz-tG-qcm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-148.26666666666665" y="261.27999999999992"/>
+            <point key="canvasLocation" x="-149" y="261"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

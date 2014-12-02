@@ -59,7 +59,12 @@
 -(void) setAmount:(double)amount
 {
     _amount = amount;
-    self.amountLabel.text = [NSString stringWithFormat:@"$%.2f", _amount];
+    self.amountLabel.text = [NSString stringWithFormat:@"$%.2f", ABS(_amount)];
+    
+    if(amount < 0)
+        self.amountLabel.textColor = [UIColor redColor];
+    else
+        self.amountLabel.textColor = [UIColor blackColor];
 }
 
 

@@ -15,7 +15,7 @@
 
 @interface LedgerViewController ()
 
-@property (copy,nonatomic) NSArray *people;
+@property (copy,nonatomic) NSMutableArray *people;
 
 
 @end
@@ -30,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
+    self.tableView.allowsMultipleSelectionDuringEditing = NO;
     UIEdgeInsets contentInset = self.tableView.contentInset;
     contentInset.top = 20;
     [self.tableView setContentInset:contentInset];
@@ -138,6 +138,42 @@
 //didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 //    
 //}
+
+
+// Override to support conditional editing of the table view.
+// This only needs to be implemented if you are going to be returning NO
+// for some items. By default, all items are editable.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES if you want the specified item to be editable.
+    return YES;
+}
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        //add code here for when you hit delete
+        
+        PFObject *holder = self.people[indexPath.row];
+        //self.people.count
+        NSMutableArray *newList = [[NSMutableArray alloc] init];
+        for(int i = 0; i< self.people.count;i++){
+            if(self.people[i] != self.people[indexPath.row]) {
+            [newList addObject:self.people[i]];
+            }
+        }
+        [holder deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            
+            
+            [self.tableView reloadData];
+        }];
+        
+        self.people = newList;
+        [self.tableView reloadData];
+        
+    }
+}
+
+
 
 
 
